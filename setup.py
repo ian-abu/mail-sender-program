@@ -1,11 +1,13 @@
 
 from setuptools import setup, find_packages
 import codecs
-import os
-
-VERSION = '0.0.2'
+from os import path
+this_directory = path.abspath(path.dirname(__file__))
+with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
+    LONG_DESCRIPTION  = f.read()
+    
+VERSION = '0.0.3'
 DESCRIPTION = 'gmail sending lib'
-LONG_DESCRIPTION = 'a library that sends gmail in 2 lines of code'
 URL = 'https://pypi.org/project/mail-sending-program/'
 # Setting up
 setup(
