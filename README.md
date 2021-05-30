@@ -24,7 +24,7 @@ send_html_gmail_to_people_in_list(email_name,password_for_gmail , to(list), subj
 
 ## 4 send regular gmail to many people:
 ```python 
-import gmmail_sender as g 
+import gmail_sender as g 
 g.send_gmail_to_people_in_list(email_name,password_for_gmail , to(list), subject, content)
 ```
 
