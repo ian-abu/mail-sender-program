@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 import codecs
 import os
 
-VERSION = '0.0.1'
+VERSION = '0.0.2'
 DESCRIPTION = 'gmail sending lib'
 LONG_DESCRIPTION = 'a library that sends gmail in 2 lines of code'
 URL = 'https://pypi.org/project/mail-sending-program/'
