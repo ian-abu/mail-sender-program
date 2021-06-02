@@ -28,5 +28,6 @@ import gmail_sender as g
 g.send_gmail_to_people_in_list(email_name,password_for_gmail , to(list), subject, content)
 ```
 
+
 # it is that simple
 # click [here](https://github.com/Pydevoleper/mail-sender-program) to see my github
