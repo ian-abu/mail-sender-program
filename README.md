@@ -57,9 +57,9 @@ g.send_random_message_no_word_meaning_lower_case(email_name,password_for_gmail ,
 
 you will be able to:
 
-1. send gmails to **multipule** people with random letters 
+1. send gmails to **multipule** people with random no mening letters 
 
-2. send gmail to people with a random meaning
+2. send gmail to people with a random **meaning**
 
 <h1>update coming in 20.6.2021<h1>
 
