@@ -116,7 +116,8 @@ def send_attachment_with_html_body(email_name, password_for_gmail, to, subject, 
         server.login(email_name, password_for_gmail)
         server.sendmail(email_name, to, text)
 
-def send_random_message_no_word_meaning_cpas_lock(email_name, password_for_gmail, to):
+def send_random_message_no_word_meaning_caps_lock(email_name, password_for_gmail  ,to, subject ,lettrs):
+    lettrs = int(lettrs)
     list1 = [
         "A",
         "B",
@@ -142,3 +143,18 @@ def send_random_message_no_word_meaning_cpas_lock(email_name, password_for_gmail
         "Y",
         "Z"
     ]
+    content = ""
+    for i in range(lettrs):
+        content1 = random.choice(list1)
+        content = content + content1
+    
+    send_gmail_to_one(email_name, password_for_gmail,to, subject, content)
+def send_random_message_no_word_meaning_lower_case(email_name, password_for_gmail  ,to, subject ,lettrs):
+    lettrs = int(lettrs)
+    content = ""
+    list1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    for i in range(lettrs):
+        content1 = random.choice(list1)
+        content = content + content1
+    
+    send_gmail_to_one(email_name, password_for_gmail,to, subject, content)
