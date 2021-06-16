@@ -1,5 +1,6 @@
-# mail-sender-program
-a program that makes python mailing easy
+# mail-sending-program 0.1.2
+
+a program that makes it easy to send emails with python
 
 # install
 ```cmd
@@ -44,10 +45,22 @@ g.send_gmail_to_people_in_list(email_name,password_for_gmail , to(list), subject
 import gmail_sender as g 
 g.send_random_message_no_word_meaning_caps_lock(email_name,password_for_gmail , to, subject, how many letters)
 ```
-## 5 send random lower case letters someone:
+## 6 send random lower case letters someone:
 ```python
 import gmail_sender as g 
 g.send_random_message_no_word_meaning_lower_case(email_name,password_for_gmail , to, subject, how many letters)
 ```
-# it is that simple
-# click [here](https://github.com/Pydevoleper/mail-sender-program) to see my github
+
+# updates
+
+## 0.1.3
+
+you will be able to:
+
+1. send gmails to **multipule** people with random letters 
+
+2. send gmail to people with a random meaning
+
+<h1>update coming in 20.6.2021<h1>
+
+# to my gethub click [here](https://github.com/Pydevoleper/mail-sender-program)
