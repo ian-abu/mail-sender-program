@@ -1,7 +1,19 @@
 # mail-sender-program
-a program that sends gmail in 2 lines of code 
+a program that makes python mailing easy
 
-## examples:
+# install
+```cmd
+pip install mail-sending-program
+```
+
+# uninstall 
+
+```cmd
+pip uninstall mail-sending-program
+```
+
+
+# examples:
 
 ## 1 sending html to one person:
 ```python
@@ -27,7 +39,15 @@ send_html_gmail_to_people_in_list(email_name,password_for_gmail , to(list), subj
 import gmail_sender as g 
 g.send_gmail_to_people_in_list(email_name,password_for_gmail , to(list), subject, content)
 ```
-
-
+## 5 send random letters with caps lock to someone:
+```python 
+import gmail_sender as g 
+g.send_random_message_no_word_meaning_caps_lock(email_name,password_for_gmail , to, subject, how many letters)
+```
+## 5 send random lower case letters someone:
+```python
+import gmail_sender as g 
+g.send_random_message_no_word_meaning_lower_case(email_name,password_for_gmail , to, subject, how many letters)
+```
 # it is that simple
 # click [here](https://github.com/Pydevoleper/mail-sender-program) to see my github
