@@ -20,7 +20,7 @@ setup(
     long_description_content_type="text/markdown",
     long_description=LONG_DESCRIPTION,
     packages=find_packages(),
-    keywords=['python', 'gmail', 'html', 'stmlp', 'auto', ''],
+    keywords=['python', 'gmail', 'html', 'stmlp', 'auto', 'random'],
     classifiers=[
         "Development Status :: 1 - Planning",
         "Intended Audience :: Developers",
