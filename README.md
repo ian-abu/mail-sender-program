@@ -1,4 +1,4 @@
-# mail-sending-program 1.0
+# mail-sending-program 1.1
 
 a program that makes it easy to send emails with python
 
@@ -65,7 +65,7 @@ g.send_random_message_no_word_meaning_lower_case(email_name, password_for_gmail 
 
 # updates
 
-## 1.1
+## 1.2
 
 you will be able to:
 
@@ -75,7 +75,7 @@ you will be able to:
 
 <h1>update coming in 23.7.2021<h1>
 
-## 1.0.0
+## 1.1
   
 1. now you can see what you sent in a file called gmail.txt
 # to my github click [here](https://github.com/Pydevoleper/mail-sender-program)
