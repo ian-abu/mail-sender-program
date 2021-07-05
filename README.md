@@ -1,4 +1,4 @@
-# mail-sending-program 0.1.3
+# mail-sending-program 1.0
 
 a program that makes it easy to send emails with python
 
