@@ -2,9 +2,19 @@ import smtplib
 from email.message import EmailMessage
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-import time
+from time import strftime
 import random
+import ssl
+from email.mime.base import MIMEBase
+from email import encoders
 from datetime import datetime
+def write_to_file(content):
+    ntime = strftime('%H:%M:%S %p')
+    f = open("gmail.txt", "a")
+    f.write("======================================\n")
+    f.write("sent at" + ntime + "\n")
+    f.write(content + "\n")
+    f.write("======================================\n")
 def send_gmail_to_people_in_list(email_name,password_for_gmail , to, subject, content):
     email_address = email_name
     msg = EmailMessage()
@@ -16,7 +26,7 @@ def send_gmail_to_people_in_list(email_name,password_for_gmail , to, subject, co
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
         smtp.login( email_address, password_for_gmail)
         smtp.send_message(msg)
-    
+        write_to_file(content)
 
 def send_html_gmail_to_people_in_list(email_name,password_for_gmail , to, subject, content_html):
     content = MIMEText(content_html, "html")
@@ -30,7 +40,8 @@ def send_html_gmail_to_people_in_list(email_name,password_for_gmail , to, subjec
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
         smtp.login( email_address, password_for_gmail)
         smtp.send_message(msg)
-        
+        write_to_file(content)
+
 
 def send_gmail_to_one(email_name,password_for_gmail , to, subject, content):
     email_address = email_name
@@ -43,7 +54,8 @@ def send_gmail_to_one(email_name,password_for_gmail , to, subject, content):
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
         smtp.login( email_address, password_for_gmail)
         smtp.send_message(msg)
-       
+        write_to_file(content)
+
 
 def send_html_gmail_to_one(email_name,password_for_gmail , to, subject, content_html):
     content = MIMEText(content_html, "html")
@@ -57,7 +69,8 @@ def send_html_gmail_to_one(email_name,password_for_gmail , to, subject, content_
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
         smtp.login( email_address, password_for_gmail)
         smtp.send_message(msg)
-        
+        write_to_file(content)
+
 def send_attachment_with_regular_body(email_name, password_for_gmail, to, subject, content, path_to_file):
     message = MIMEMultipart()
     message["From"] = email_name
@@ -65,7 +78,7 @@ def send_attachment_with_regular_body(email_name, password_for_gmail, to, subjec
     message["Subject"] = subject
     message.attach(MIMEText(content, "plain"))
 
-    filename = "document.pdf" 
+    filename = path_to_file
 
     with open(filename, "rb") as attachment:
         part = MIMEBase("application", "octet-stream")
@@ -86,15 +99,15 @@ def send_attachment_with_regular_body(email_name, password_for_gmail, to, subjec
     with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
         server.login(email_name, password_for_gmail)
         server.sendmail(email_name, to, text)
-
+        write_to_file(text)
 def send_attachment_with_html_body(email_name, password_for_gmail, to, subject, content_html, path_to_file):
     message = MIMEMultipart()
     message["From"] = email_name
     message["To"] = to
     message["Subject"] = subject
-    message.attach(MIMEText(content, "html"))
+    message.attach(MIMEText(content_html, "html"))
 
-    filename = "document.pdf" 
+    filename = path_to_file 
 
     with open(filename, "rb") as attachment:
         part = MIMEBase("application", "octet-stream")
@@ -115,7 +128,7 @@ def send_attachment_with_html_body(email_name, password_for_gmail, to, subject, 
     with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
         server.login(email_name, password_for_gmail)
         server.sendmail(email_name, to, text)
-
+        write_to_file(text)
 def send_random_message_no_word_meaning_caps_lock(email_name, password_for_gmail  ,to, subject ,lettrs):
     lettrs = int(lettrs)
     list1 = [
