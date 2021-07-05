@@ -65,18 +65,17 @@ g.send_random_message_no_word_meaning_lower_case(email_name, password_for_gmail 
 
 # updates
 
-## 1.0.0
-
-the first full version of mail-sending-program !!!
+## 1.1
 
 you will be able to:
 
-1. send gmails and save the gmail you sent to and gmail content in a file called gmail.txt
+1. reuse sent gmails (status:we are working on it)
 
-2. reuse sent gmails
+2. be able to read gmail (in testing it did not work so it will be included in this update)
 
-3. be able to read gmail
+<h1>update coming in 23.7.2021<h1>
 
-<h1>update coming in 6.7.2021<h1>
-
+## 1.0.0
+  
+1. now you can see what you sent in a file called gmail.txt
 # to my github click [here](https://github.com/Pydevoleper/mail-sender-program)
