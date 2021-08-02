@@ -1,4 +1,4 @@
-# mail-sending-program 1.1
+# mail-sending-program 1.2
 
 a program that makes it easy to send emails with python
 
