@@ -9,12 +9,7 @@ from email.mime.base import MIMEBase
 from email import encoders
 from datetime import datetime
 def write_to_file(content):
-    ntime = strftime('%H:%M:%S %p')
-    f = open("gmail.txt", "a")
-    f.write("======================================\n")
-    f.write("sent at" + ntime + "\n")
-    f.write(content + "\n")
-    f.write("======================================\n")
+    pass
 def send_gmail_to_people_in_list(email_name,password_for_gmail , to, subject, content):
     email_address = email_name
     msg = EmailMessage()
