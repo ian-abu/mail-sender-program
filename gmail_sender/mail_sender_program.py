@@ -1,16 +1,31 @@
+from os import write
 import smtplib
 from email.message import EmailMessage
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from time import strftime
 import random
+import email
 import ssl
+import traceback 
+import imaplib
 from email.mime.base import MIMEBase
 from email import encoders
 from datetime import datetime
+def load_template(name):
+    f = open(name)
+    html = f.read()
+    return html
 def write_to_file(content):
-    pass
-def send_gmail_to_people_in_list(email_name,password_for_gmail , to, subject, content):
+    ntime = strftime('%H:%M:%S %p')
+    f = open("gmail.txt", "a")
+    f.write("======================================\n")
+    f.write("sent at " + ntime + "\n")
+    f.write(content + "\n")
+    f.write("======================================\n")
+def send_gmail_to_people_in_list(email_name,password_for_gmail , to, subject, content, write=None):
+    if write == "":
+        write = "no"
     email_address = email_name
     msg = EmailMessage()
     msg['subject '] = subject
@@ -21,9 +36,11 @@ def send_gmail_to_people_in_list(email_name,password_for_gmail , to, subject, co
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
         smtp.login( email_address, password_for_gmail)
         smtp.send_message(msg)
-        write_to_file(content)
-
-def send_html_gmail_to_people_in_list(email_name,password_for_gmail , to, subject, content_html):
+        if write == "yes":
+            write_to_file(content)
+def send_html_gmail_to_people_in_list(email_name,password_for_gmail , to, subject, content_html, write=None):
+    if write == "":
+        write = "no"
     content = MIMEText(content_html, "html")
     email_address = email_name
     msg = EmailMessage()
@@ -35,10 +52,13 @@ def send_html_gmail_to_people_in_list(email_name,password_for_gmail , to, subjec
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
         smtp.login( email_address, password_for_gmail)
         smtp.send_message(msg)
-        write_to_file(content)
+        if write == "yes":
+            write_to_file(content_html)
 
 
-def send_gmail_to_one(email_name,password_for_gmail , to, subject, content):
+def send_gmail_to_one(email_name,password_for_gmail , to, subject, content, write=None):
+    if write == "":
+        write = "no"
     email_address = email_name
     msg = EmailMessage()
     msg['subject '] = subject
@@ -49,10 +69,13 @@ def send_gmail_to_one(email_name,password_for_gmail , to, subject, content):
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
         smtp.login( email_address, password_for_gmail)
         smtp.send_message(msg)
-        write_to_file(content)
+        if write == "yes":
+            write_to_file(content)
 
 
-def send_html_gmail_to_one(email_name,password_for_gmail , to, subject, content_html):
+def send_html_gmail_to_one(email_name,password_for_gmail , to, subject, content_html, write=None):
+    if write == "":
+        write = "no"
     content = MIMEText(content_html, "html")
     email_address = email_name
     msg = EmailMessage()
@@ -64,9 +87,12 @@ def send_html_gmail_to_one(email_name,password_for_gmail , to, subject, content_
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
         smtp.login( email_address, password_for_gmail)
         smtp.send_message(msg)
-        write_to_file(content)
+        if write == "yes":
+            write_to_file(content_html)
 
-def send_attachment_with_regular_body(email_name, password_for_gmail, to, subject, content, path_to_file):
+def send_attachment_with_regular_body(email_name, password_for_gmail, to, subject, content, path_to_file, write=None):
+    if write == "":
+        write = "no"
     message = MIMEMultipart()
     message["From"] = email_name
     message["To"] = to
@@ -94,8 +120,11 @@ def send_attachment_with_regular_body(email_name, password_for_gmail, to, subjec
     with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
         server.login(email_name, password_for_gmail)
         server.sendmail(email_name, to, text)
-        write_to_file(text)
-def send_attachment_with_html_body(email_name, password_for_gmail, to, subject, content_html, path_to_file):
+        if write == "yes":
+            write_to_file(content)
+def send_attachment_with_html_body(email_name, password_for_gmail, to, subject, content_html, path_to_file, write=None):
+    if write == "":
+        write = "no"
     message = MIMEMultipart()
     message["From"] = email_name
     message["To"] = to
@@ -123,8 +152,11 @@ def send_attachment_with_html_body(email_name, password_for_gmail, to, subject, 
     with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
         server.login(email_name, password_for_gmail)
         server.sendmail(email_name, to, text)
-        write_to_file(text)
-def send_random_message_no_word_meaning_caps_lock(email_name, password_for_gmail  ,to, subject ,lettrs):
+        if write == "yes":
+            write_to_file(content_html)
+def send_random_message_no_word_meaning_caps_lock(email_name, password_for_gmail  ,to, subject ,lettrs, write=None):
+    if write == "":
+        write = "no"
     lettrs = int(lettrs)
     list1 = [
         "A",
@@ -157,7 +189,11 @@ def send_random_message_no_word_meaning_caps_lock(email_name, password_for_gmail
         content = content + content1
     
     send_gmail_to_one(email_name, password_for_gmail,to, subject, content)
-def send_random_message_no_word_meaning_lower_case(email_name, password_for_gmail  ,to, subject ,lettrs):
+    if write == "yes":
+        write_to_file(content)
+def send_random_message_no_word_meaning_lower_case(email_name, password_for_gmail  ,to, subject ,lettrs, write=None):
+    if write == "":
+        write = "no"
     lettrs = int(lettrs)
     content = ""
     list1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
@@ -166,8 +202,11 @@ def send_random_message_no_word_meaning_lower_case(email_name, password_for_gmai
         content = content + content1
     
     send_gmail_to_one(email_name, password_for_gmail,to, subject, content)
-
-def send_random_message_no_word_meaning_caps_lock_to_many(email_name, password_for_gmail  ,to, subject ,lettrs):
+    if write == "yes":
+        write_to_file(content)
+def send_random_message_no_word_meaning_caps_lock_to_many(email_name, password_for_gmail  ,to, subject ,lettrs, write=None):
+    if write == "":
+        write = "no"
     lettrs = int(lettrs)
     list1 = [
         "A",
@@ -200,8 +239,11 @@ def send_random_message_no_word_meaning_caps_lock_to_many(email_name, password_f
         content = content + content1
     
     send_gmail_to_people_in_list(email_name, password_for_gmail,to, subject, content)
-
-def send_random_message_no_word_meaning_lower_case(email_name, password_for_gmail  ,to, subject ,lettrs):
+    if write == "yes":
+        write_to_file(content)
+def send_random_message_no_word_meaning_lower_case(email_name, password_for_gmail  ,to, subject ,lettrs, write=None):
+    if write == "":
+        write = "no"
     lettrs = int(lettrs)
     content = ""
     list1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
@@ -210,9 +252,12 @@ def send_random_message_no_word_meaning_lower_case(email_name, password_for_gmai
         content = content + content1
     
     send_gmail_to_people_in_list(email_name, password_for_gmail,to, subject, content)
+    if write == "yes":
+        write_to_file(content)
 
-
-def send_gmail_with_meaning(email_name, password_for_gmail,to):
+def send_gmail_with_meaning(email_name, password_for_gmail,to, write=None):
+    if write == "":
+        write = "no"
     listg = [
         "hello, good morning",
         "what a good morning",
@@ -253,8 +298,11 @@ def send_gmail_with_meaning(email_name, password_for_gmail,to):
     
     subject = random.choice(lists)
     send_gmail_to_one(email_name, password_for_gmail, to, subject, content)
-
-def send_gmail_with_meaning_to_many(email_name, password_for_gmail,to):
+    if write == "yes":
+        write_to_file(content)
+def send_gmail_with_meaning_to_many(email_name, password_for_gmail,to, write=None):
+    if write == "":
+        write = "no"
     listg = [
         "hello, good morning",
         "what a good morning",
@@ -295,3 +343,39 @@ def send_gmail_with_meaning_to_many(email_name, password_for_gmail,to):
     
     subject = random.choice(lists)
     send_gmail_to_people_in_list(email_name, password_for_gmail, to, subject, content)
+    if write == "yes":
+        write_to_file(content)
+def read_email(email_name, password_for_gmail, org):
+    try:
+        ORG_EMAIL = org
+        FROM_EMAIL = email_name + ORG_EMAIL 
+        FROM_PWD = password_for_gmail
+        SMTP_SERVER = "imap.gmail.com" 
+        SMTP_PORT = 993
+        mail = imaplib.IMAP4_SSL(SMTP_SERVER)
+        mail.login(FROM_EMAIL,FROM_PWD)
+        mail.select('inbox')
+
+        data = mail.search(None, 'ALL')
+        mail_ids = data[1]
+        id_list = mail_ids[0].split()   
+        first_email_id = int(id_list[0])
+        latest_email_id = int(id_list[-1])
+
+        for i in range(latest_email_id,first_email_id, -1):
+            data = mail.fetch(str(i), '(RFC822)' )
+            for response_part in data:
+                arr = response_part[0]
+                if isinstance(arr, tuple):
+                    msg = email.message_from_string(str(arr[1],'utf-8'))
+                    email_subject = msg['subject']
+                    email_from = msg['from']
+                    if email_subject != None:
+                        print('From : ' + str(email_from) + '\n')
+                        print('Subject : ' + str(email_subject) + '\n')
+                    else: 
+                        break
+
+    except Exception as e:
+        traceback.print_exc() 
+        print(str(e))
