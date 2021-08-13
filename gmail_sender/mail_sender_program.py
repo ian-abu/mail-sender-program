@@ -345,10 +345,9 @@ def send_gmail_with_meaning_to_many(email_name, password_for_gmail,to, write=Non
     send_gmail_to_people_in_list(email_name, password_for_gmail, to, subject, content)
     if write == "yes":
         write_to_file(content)
-def read_email(email_name, password_for_gmail, org):
+def read_email(email_name, password_for_gmail):
     try:
-        ORG_EMAIL = org
-        FROM_EMAIL = email_name + ORG_EMAIL 
+        FROM_EMAIL = email_name
         FROM_PWD = password_for_gmail
         SMTP_SERVER = "imap.gmail.com" 
         SMTP_PORT = 993
