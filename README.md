@@ -20,6 +20,7 @@ a program that makes it really easy to send emails and read emails with python
 * [read your email](#9-read-email)
 * [send plain text email with attachment](#10-send-gmail-with-attachment)
 * [send html email with attachment](#11-send-gmail-with-attachment)
+* [inputs in a function](#inputs-in-a-function)
 * [updates](#updates)
 * [latest update](#latest-update)
 
