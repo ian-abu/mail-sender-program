@@ -137,7 +137,14 @@ g.send_html_gmail_to_one(email_name,password_for_gmail , to, subject, load_templ
 
 # updates
 
-no updates planned
+## 1.5
+1. make an auto sending bot to send email at any time you want to whoever you want
+
+2. adding ways to make a template file other than html
+
+3. bug fixes
+
+update coming -  7.12.2021
 
 #
 # latest update
