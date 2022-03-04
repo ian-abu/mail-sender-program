@@ -144,7 +144,7 @@ g.send_html_gmail_to_one(email_name,password_for_gmail , to, subject, load_templ
 
 3. bug fixes
 
-update coming -  7.12.2021
+update coming -  1.4.2022
 
 #
 # latest update
