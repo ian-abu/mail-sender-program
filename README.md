@@ -159,7 +159,7 @@ update coming -  1.4.2022
 4. attach files to  html email or a plain text email
 #
 
-# to my github click [here](https://github.com/Pydevoleper/mail-sender-program)
+# to my github click [here](https://github.com/ian-abu/mail-sender-program)
 
 # to the pypi page click [here](https://pypi.org/project/mail-sending-program/)
 
