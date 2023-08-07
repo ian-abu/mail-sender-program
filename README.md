@@ -3,7 +3,7 @@
   <img alt="PyPI" src="https://img.shields.io/pypi/v/mail-sending-program">
   <img alt="GitHub" src="https://img.shields.io/github/license/ian-abu/mail-sender-program">
   <img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/ian-abu/mail-sender-program/.github%2Fworkflows%2Fcodeql-analysis.yml">
-  <a href="https://pepy.tech/project/quote"><img alt="Downloads" src="https://pepy.tech/badge/mail-sending-program"></a>
+  <a href="https://pepy.tech/project/mail-sending-program"><img alt="Downloads" src="https://pepy.tech/badge/mail-sending-program"></a>
 </p>
 a program that makes it really easy to send emails and read emails with python
 
