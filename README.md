@@ -1,5 +1,10 @@
 # mail-sending-program 1.4
-
+<p align="center">
+  <img alt="PyPI" src="https://img.shields.io/pypi/v/mail-sending-program">
+  <img alt="GitHub" src="https://img.shields.io/github/license/ian-abu/mail-sender-program">
+  <img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/ian-abu/mail-sender-program/.github%2Fworkflows%2Fcodeql-analysis.yml">
+  <a href="https://pepy.tech/project/quote"><img alt="Downloads" src="https://pepy.tech/badge/mail-sending-program"></a>
+</p>
 a program that makes it really easy to send emails and read emails with python
 
 #
@@ -144,7 +149,7 @@ g.send_html_gmail_to_one(email_name,password_for_gmail , to, subject, load_templ
 
 3. bug fixes
 
-update coming -  1.4.2022
+update coming -  8.10.2023
 
 #
 # latest update
