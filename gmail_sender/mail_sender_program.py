@@ -1,4 +1,3 @@
-from os import write
 import smtplib
 from email.message import EmailMessage
 from email.mime.text import MIMEText
@@ -12,6 +11,15 @@ import imaplib
 from email.mime.base import MIMEBase
 from email import encoders
 from datetime import datetime
+
+#Error classes
+
+class InvalidVerbose(Exception):
+    #verbose options can be 0 or 1
+    pass
+
+
+# functions
 def load_template(name):
     f = open(name)
     html = f.read()
@@ -38,6 +46,8 @@ def send_gmail_to_people_in_list(email_name,password_for_gmail , to, subject, co
         smtp.send_message(msg)
         if write == "yes":
             write_to_file(content)
+
+
 def send_html_gmail_to_people_in_list(email_name,password_for_gmail , to, subject, content_html, write=None):
     if write == "":
         write = "no"
@@ -122,6 +132,8 @@ def send_attachment_with_regular_body(email_name, password_for_gmail, to, subjec
         server.sendmail(email_name, to, text)
         if write == "yes":
             write_to_file(content)
+
+
 def send_attachment_with_html_body(email_name, password_for_gmail, to, subject, content_html, path_to_file, write=None):
     if write == "":
         write = "no"
@@ -154,6 +166,8 @@ def send_attachment_with_html_body(email_name, password_for_gmail, to, subject, 
         server.sendmail(email_name, to, text)
         if write == "yes":
             write_to_file(content_html)
+
+
 def send_random_message_no_word_meaning_caps_lock(email_name, password_for_gmail  ,to, subject ,lettrs, write=None):
     if write == "":
         write = "no"
@@ -191,6 +205,8 @@ def send_random_message_no_word_meaning_caps_lock(email_name, password_for_gmail
     send_gmail_to_one(email_name, password_for_gmail,to, subject, content)
     if write == "yes":
         write_to_file(content)
+
+
 def send_random_message_no_word_meaning_lower_case(email_name, password_for_gmail  ,to, subject ,lettrs, write=None):
     if write == "":
         write = "no"
@@ -204,6 +220,8 @@ def send_random_message_no_word_meaning_lower_case(email_name, password_for_gmai
     send_gmail_to_one(email_name, password_for_gmail,to, subject, content)
     if write == "yes":
         write_to_file(content)
+
+
 def send_random_message_no_word_meaning_caps_lock_to_many(email_name, password_for_gmail  ,to, subject ,lettrs, write=None):
     if write == "":
         write = "no"
@@ -241,6 +259,8 @@ def send_random_message_no_word_meaning_caps_lock_to_many(email_name, password_f
     send_gmail_to_people_in_list(email_name, password_for_gmail,to, subject, content)
     if write == "yes":
         write_to_file(content)
+
+
 def send_random_message_no_word_meaning_lower_case(email_name, password_for_gmail  ,to, subject ,lettrs, write=None):
     if write == "":
         write = "no"
@@ -300,6 +320,8 @@ def send_gmail_with_meaning(email_name, password_for_gmail,to, write=None):
     send_gmail_to_one(email_name, password_for_gmail, to, subject, content)
     if write == "yes":
         write_to_file(content)
+
+
 def send_gmail_with_meaning_to_many(email_name, password_for_gmail,to, write=None):
     if write == "":
         write = "no"
@@ -345,6 +367,8 @@ def send_gmail_with_meaning_to_many(email_name, password_for_gmail,to, write=Non
     send_gmail_to_people_in_list(email_name, password_for_gmail, to, subject, content)
     if write == "yes":
         write_to_file(content)
+
+        
 def read_email(email_name, password_for_gmail):
     try:
         FROM_EMAIL = email_name
@@ -378,3 +402,23 @@ def read_email(email_name, password_for_gmail):
     except Exception as e:
         traceback.print_exc() 
         print(str(e))
+
+def send_message_set_time(email_name,password_for_gmail , to, subject, content, time,write=None, verbose=1):
+    try:
+        if verbose == 1:
+            print(f"sending at {time}")
+
+        elif verbose == 0:
+            pass
+
+        else:
+            raise InvalidVerbose
+        
+        while True:
+            now = datetime.now()
+
+            current_time = now.strftime("%H:%M")
+            if time == current_time:
+                send_gmail_to_one(email_name,password_for_gmail,to,subject,content,write)
+    except InvalidVerbose:
+        print(f"verbose can be only 0 or 1 not {verbose}")
