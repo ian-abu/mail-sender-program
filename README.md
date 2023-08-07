@@ -1,4 +1,4 @@
-# mail-sending-program 1.4
+# mail-sending-program 1.5
 <p align="center">
   <img alt="PyPI" src="https://img.shields.io/pypi/v/mail-sending-program">
   <img alt="GitHub" src="https://img.shields.io/github/license/ian-abu/mail-sender-program">
@@ -142,26 +142,16 @@ g.send_html_gmail_to_one(email_name,password_for_gmail , to, subject, load_templ
 
 # updates
 
+there is nothing planned if you are interested in a feature contact me with issues
+
+# latest update
+
 ## 1.5
 1. make an auto sending bot to send email at any time you want to whoever you want
 
 2. adding ways to make a template file other than html
 
 3. bug fixes
-
-update coming -  8.10.2023
-
-#
-# latest update
-
-## 1.4
-1. bug fixes
-
-2. you are now able to read emails
-
-3. you can make email template and use it (just html)
-
-4. attach files to  html email or a plain text email
 #
 
 # to my github click [here](https://github.com/ian-abu/mail-sender-program)
